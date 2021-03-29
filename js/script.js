@@ -18,7 +18,21 @@ Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
 
+console.log(data);
 
+// TODO: build a list item with information from the data.js file
+
+//<li class="student-item cf">
+//<div class="student-details">
+//  <img class="avatar" src="https://randomuser.me/api/portraits/women/25.jpg" alt="Profile Picture">
+//  <h3>Ethel Dean</h3>
+//  <span class="email">ethel.dean@example.com</span>
+//</div>
+//<div class="joined-details">
+//  <span class="date">Joined 12-15-2005</span>
+//</div>
+//</li>
+//TODO: append the list item to the student list ul // <ul class="student-list"></ul>
 
 /*
 Create the `addPagination` function
