@@ -116,13 +116,16 @@ showPage(1);
 // createPageButton(1, true);
 addPagination(numPages, 1);
 pagesList.addEventListener('click', (e) => {
-   const studentListUl = document.querySelector('.student-list');
-   studentListUl.innerHTML = '';
-   const pagesList = document.querySelector('.link-list');
-   pagesList.innerHTML = '';
    //console.log(e.target);
-   // parseInt(e.target.innerText);
-   let pageClicked = parseInt(e.target.innerText)
-   showPage(pageClicked);
-   addPagination(numPages, pageClicked);
+   if (e.target.type === 'button') {
+      const studentListUl = document.querySelector('.student-list');
+      studentListUl.innerHTML = '';
+      const pagesList = document.querySelector('.link-list');
+      pagesList.innerHTML = '';
+      //console.log(e.target);
+      // parseInt(e.target.innerText);
+      let pageClicked = parseInt(e.target.innerText)
+      showPage(pageClicked);
+      addPagination(numPages, pageClicked);
+   }  
 });
