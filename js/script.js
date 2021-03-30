@@ -75,21 +75,31 @@ This function will create and insert/append the elements needed for the paginati
 */
 //TODO: Need to determine how many pages there will be (if there are 17 students then there needs to be 2 pages)
 let numPages = Math.ceil(data.length / 9);
+
+function addPagination(numPages, currentPage) {
 //TODO: Need to create elements for each page with the correct page number
 /*
 <ul class="link-list"> */
-const pagesList = document.querySelector('.link-list');
-/*<!-- Dynamically insert pagination buttons here
-EXAMPLE - Two pagination buttons, one with active class, one without: --> */
-  //<li>
-  const pageLi = document.createElement('li');
-  //  <button type="button" class="active">1</button>
-  const pageButton = document.createElement('button');
-  pageButton.type = "button";
-  pageButton.textContent = '1';
-  pageLi.appendChild(pageButton);
-  pagesList.appendChild(pageLi);
+   const pagesList = document.querySelector('.link-list');
+   
+   /*<!-- Dynamically insert pagination buttons here
+   EXAMPLE - Two pagination buttons, one with active class, one without: --> */
+   //<li>
+   function createPageButton(pageNumber, isActive) {
+   const pageLi = document.createElement('li');
+   //  <button type="button" class="active">1</button>
+   const pageButton = document.createElement('button');
+   pageButton.type = "button";
+   if (isActive) pageButton.className = "active";
+   pageButton.textContent = String(pageNumber);
+   pageLi.appendChild(pageButton);
+   pagesList.appendChild(pageLi);
+  }
 
+  for (let i = 1; i <= numPages; i++) {
+     createPageButton(i, (i === currentPage));
+  }
+}  
   //</li>
   //<li>
   //  <button type="button">2</button>
@@ -100,6 +110,19 @@ EXAMPLE - Two pagination buttons, one with active class, one without: --> */
 //TODO: need to set up event listeners that will call the show page function when clicked
 //TODO: make sure that the active class is on the page being displayed and is removed from others when another page is clicked
 
-
+const pagesList = document.querySelector('.link-list');
 // Call functions
-showPage(2);
+showPage(1);
+// createPageButton(1, true);
+addPagination(numPages, 1);
+pagesList.addEventListener('click', (e) => {
+   const studentListUl = document.querySelector('.student-list');
+   studentListUl.innerHTML = '';
+   const pagesList = document.querySelector('.link-list');
+   pagesList.innerHTML = '';
+   //console.log(e.target);
+   // parseInt(e.target.innerText);
+   let pageClicked = parseInt(e.target.innerText)
+   showPage(pageClicked);
+   addPagination(numPages, pageClicked);
+});
