@@ -3,15 +3,11 @@ Treehouse Techdegree:
 FSJS Project 2 - Data Pagination and Filtering
 */
 
-
-
 /*
 For assistance:
    Check out the "Project Resources" section of the Instructions tab: https://teamtreehouse.com/projects/data-pagination-and-filtering#instructions
    Reach out in your Slack community: https://treehouse-fsjs-102.slack.com/app_redirect?channel=unit-2
 */
-
-
 
 /*
 Create the `showPage` function
@@ -61,8 +57,9 @@ function showPage(pageNumber) {
       return studentListItem;
    }
 
-   //TODO: Call createStudentListItem function and pass in parameters from array
    const studentListUl = document.querySelector('.student-list');
+
+   //TODO: Need to make sure that a page number greater than the number of pages doesn't throw an error (may not be necessary)
    let start = (pageNumber * 9) - 9;
    let end = pageNumber * 9;
    let studentsPage = data.slice(start, end);
@@ -76,7 +73,32 @@ function showPage(pageNumber) {
 Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
 */
+//TODO: Need to determine how many pages there will be (if there are 17 students then there needs to be 2 pages)
+let numPages = Math.ceil(data.length / 9);
+//TODO: Need to create elements for each page with the correct page number
+/*
+<ul class="link-list"> */
+const pagesList = document.querySelector('.link-list');
+/*<!-- Dynamically insert pagination buttons here
+EXAMPLE - Two pagination buttons, one with active class, one without: --> */
+  //<li>
+  const pageLi = document.createElement('li');
+  //  <button type="button" class="active">1</button>
+  const pageButton = document.createElement('button');
+  pageButton.type = "button";
+  pageButton.textContent = '1';
+  pageLi.appendChild(pageButton);
+  pagesList.appendChild(pageLi);
 
+  //</li>
+  //<li>
+  //  <button type="button">2</button>
+  //</li>
+/*</ul>*/
+
+
+//TODO: need to set up event listeners that will call the show page function when clicked
+//TODO: make sure that the active class is on the page being displayed and is removed from others when another page is clicked
 
 
 // Call functions
