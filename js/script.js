@@ -17,7 +17,7 @@ This function will create and insert/append the elements needed to display a "pa
 // slice(start, end)
 
 console.log(data);
-function showPage(pageNumber) {
+function showPage(list, pageNumber) {
    function createStudentListItem(studentObject) {
       //<li class="student-item cf">
       const studentListItem = document.createElement('li');
@@ -62,7 +62,7 @@ function showPage(pageNumber) {
    //TODO: Need to make sure that a page number greater than the number of pages doesn't throw an error (may not be necessary)
    let start = (pageNumber * 9) - 9;
    let end = pageNumber * 9;
-   let studentsPage = data.slice(start, end);
+   let studentsPage = list.slice(start, end);
    for (let i = 0; i < studentsPage.length; i++) {
       const studentListItem = createStudentListItem(studentsPage[i]);
       studentListUl.appendChild(studentListItem);
@@ -112,7 +112,7 @@ function addPagination(numPages, currentPage) {
 
 const pagesList = document.querySelector('.link-list');
 // Call functions
-showPage(1);
+showPage(data, 1);
 // createPageButton(1, true);
 addPagination(numPages, 1);
 pagesList.addEventListener('click', (e) => {
@@ -125,7 +125,7 @@ pagesList.addEventListener('click', (e) => {
       //console.log(e.target);
       // parseInt(e.target.innerText);
       let pageClicked = parseInt(e.target.innerText)
-      showPage(pageClicked);
+      showPage(data, pageClicked);
       addPagination(numPages, pageClicked);
    }  
 });
